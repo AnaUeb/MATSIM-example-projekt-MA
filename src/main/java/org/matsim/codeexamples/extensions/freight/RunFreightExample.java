@@ -50,8 +50,6 @@ public class RunFreightExample implements MATSimAppCommand {
 
 	static final Logger log = LogManager.getLogger(RunFreightExample.class);
 
-	private static int nuOfJspritIteration;
-
 	@CommandLine.Option(names = "--carrierFileLocation", description = "Path to the carrierFile.", required = true)
 	private static String carrierFilePath;
 
@@ -86,12 +84,13 @@ public class RunFreightExample implements MATSimAppCommand {
 		log.info("Config prepared");
 
 		// load scenario (this is not loading the freight material):
-		Scenario scenario = prepareScenario( config ) ;
+		Scenario scenario = ScenarioUtils.loadScenario(config);
+		CarriersUtils.loadCarriersAccordingToFreightConfig(scenario);
 
 		//Reset nuOfJspritIterations for all carriers
 		for (Carrier carrier : CarriersUtils.getCarriers(scenario).getCarriers().values()) {
-			log.warn("Overwriting the number of jsprit iterations for carrier: {}, new value is: {}.", carrier.getId() ,nuOfJspritIteration);
-			CarriersUtils.setJspritIterations(carrier, nuOfJspritIteration);
+			log.warn("Overwriting the number of jsprit iterations for carrier: {}, new value is: {}.", carrier.getId() , jspritIterations);
+			CarriersUtils.setJspritIterations(carrier, jspritIterations);
 		}
 
 		// Solving the VRP (generate carrier's tour plans)
@@ -101,54 +100,43 @@ public class RunFreightExample implements MATSimAppCommand {
 		Controler controler = prepareControler( scenario ) ;
 
 		// ## Start of the MATSim-Run: ##
-		//The VSP default settings are designed for person transport simulation. After talking to Kai, they will be set to WARN here. Kai MT may'23
-		//controler.getConfig().vspExperimental().setVspDefaultsCheckingLevel(VspExperimentalConfigGroup.VspDefaultsCheckingLevel.warn);
 		//Frachtsimulation: Nach Absprache mit KMT auf ignore gesetzt.
 		controler.getConfig().vspExperimental().setVspDefaultsCheckingLevel(VspExperimentalConfigGroup.VspDefaultsCheckingLevel.ignore);
-
 		controler.run();
 
 		log.info(" Done.");
 		return 0;
 		}
 
-	private static Scenario prepareScenario(Config config) {
-		Scenario scenario = ScenarioUtils.loadScenario(config);
-
-		CarriersUtils.loadCarriersAccordingToFreightConfig(scenario);
-
-		return scenario;
-	}
-
 	private static Config prepareConfig() {
 
-		String carriersFileLocation = carrierFilePath;
-		String vehicleTypesFileLocation = vehicleTypesFilePath;
-		nuOfJspritIteration = jspritIterations;
-		String networkChangeEventsFileLocation = networkChangeEvents;
-		String outputLocation = outputLocationFolder;
+		//KMT: Schau mal bitte in Via nach, wie das aussieht. Meines Wissens nach hat Berlin eingentlich EPSG:31468 als CRS
+		String crs = "EPSG:25832";
 
-		Config config = ConfigUtils.createConfig();
+        Config config = ConfigUtils.createConfig();
 		config.controller().setOverwriteFileSetting(OutputDirectoryHierarchy.OverwriteFileSetting.deleteDirectoryIfExists);
-		config.global().setCoordinateSystem("EPSG:25832");
+		config.global().setCoordinateSystem(crs);
 		config.global().setRandomSeed(4177);
 		config.controller().setLastIteration(0);
-		config.controller().setOutputDirectory(outputLocation);
+		config.controller().setOutputDirectory(outputLocationFolder);
 
 		config.network().setInputFile(networkFile);
-		config.network().setInputCRS("EPSG:25832");
+		config.network().setInputCRS(crs);
 
+		//KMT: Nutzt du überhaupt networkChangeEvents? Wenn nein, dann raus damit :)
+		String networkChangeEventsFileLocation = networkChangeEvents;
 		if (!Objects.equals(networkChangeEventsFileLocation, "")){
 			log.info("Setting networkChangeEventsInput file: " + networkChangeEventsFileLocation);
 			config.network().setTimeVariantNetwork(true);
 			config.network().setChangeEventsInputFile(networkChangeEventsFileLocation);
 		}
-		config.plans().setInputCRS("EPSG:25832");
+
+		config.plans().setInputCRS(crs);
 		config.plans().setActivityDurationInterpretation(PlansConfigGroup.ActivityDurationInterpretation.tryEndTimeThenDuration );
 		//freight configstuff
 		FreightCarriersConfigGroup freightCarriersConfigGroup = ConfigUtils.addOrGetModule(config, FreightCarriersConfigGroup.class);
-		freightCarriersConfigGroup.setCarriersFile(carriersFileLocation);
-		freightCarriersConfigGroup.setCarriersVehicleTypesFile(vehicleTypesFileLocation);
+		freightCarriersConfigGroup.setCarriersFile(carrierFilePath);
+		freightCarriersConfigGroup.setCarriersVehicleTypesFile(vehicleTypesFilePath);
 		freightCarriersConfigGroup.setTravelTimeSliceWidth(1800);
 		freightCarriersConfigGroup.setTimeWindowHandling(FreightCarriersConfigGroup.TimeWindowHandling.enforceBeginnings);
 
