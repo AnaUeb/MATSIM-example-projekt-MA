@@ -79,6 +79,9 @@ public class RunFreightExample implements MATSimAppCommand {
 	@CommandLine.Option(names = "--outputLocationFolder", description = "Path to output folder", required = true)
 	private static String outputLocationFolder;
 
+	@CommandLine.Option(names = "--networkFileLocation", description = "Path to network file", required = true)
+	private static String networkFile;
+
 	@CommandLine.Option(names = "--algorithmFile", description = "Path to algorithm file", defaultValue = "")
 	private String algorithmFile;
 
@@ -92,31 +95,14 @@ public class RunFreightExample implements MATSimAppCommand {
 	//public static void run( String[] args, boolean runWithOTFVis ) throws ExecutionException, InterruptedException{
 	public Integer call() throws IOException, InvalidAttributeValueException, ExecutionException, InterruptedException {
 
-/*		for (String arg : args) {
-			log.info( arg );
-		}
-
-		if ( args.length==0 ) {
-			String inputPath = "./scenarios/Berlin/Input/";
-			args = new String[] {
-					inputPath+"output_carriersNoPlans.xml",
-					inputPath + "DHL_vehicleTypes.xml",
-					"",														//algorithm
-					"1",                                                    //jSprit iterations
-					"",														//network change events
-					"./scenarios/Berlin/Output/"
-			};
-		}*/
-
-
 		// ### config stuff: ###
 		Config config = prepareConfig() ;
 		log.info("Config prepared");
 
 		// load scenario (this is not loading the freight material):
-		//Scenario scenario = ScenarioUtils.loadScenario( config );
 		Scenario scenario = prepareScenario( config ) ;
 
+		//prepare controller
 		Controler controler = prepareControler( scenario ) ;
 
 		// Solving the VRP (generate carrier's tour plans)
@@ -124,7 +110,10 @@ public class RunFreightExample implements MATSimAppCommand {
 
 		// ## Start of the MATSim-Run: ##
 		//The VSP default settings are designed for person transport simulation. After talking to Kai, they will be set to WARN here. Kai MT may'23
-		controler.getConfig().vspExperimental().setVspDefaultsCheckingLevel(VspExperimentalConfigGroup.VspDefaultsCheckingLevel.warn);
+		//controler.getConfig().vspExperimental().setVspDefaultsCheckingLevel(VspExperimentalConfigGroup.VspDefaultsCheckingLevel.warn);
+		//Frachtsimulation: Nach Absprache mit KMT auf ignore gesetzt.
+		controler.getConfig().vspExperimental().setVspDefaultsCheckingLevel(VspExperimentalConfigGroup.VspDefaultsCheckingLevel.ignore);
+
 		controler.run();
 
 		return 0;
@@ -153,7 +142,7 @@ public class RunFreightExample implements MATSimAppCommand {
 		config.controller().setLastIteration(0);
 		config.controller().setOutputDirectory(outputLocation);
 
-		config.network().setInputFile("https://svn.vsp.tu-berlin.de/repos/public-svn/matsim/scenarios/countries/de/berlin/berlin-v6.3/input/berlin-v6.3-network.xml.gz");
+		config.network().setInputFile(networkFile);
 		config.network().setInputCRS("EPSG:25832");
 
 		if (!Objects.equals(networkChangeEventsFileLocation, "")){
