@@ -65,18 +65,13 @@ public class RunFreightExample implements MATSimAppCommand {
 	@CommandLine.Option(names = "--networkFileLocation", description = "Path to network file", required = true)
 	private static String networkFile;
 
-	@CommandLine.Option(names = "--algorithmFile", description = "Path to algorithm file", defaultValue = "")
-	private String algorithmFile;
-
-	@CommandLine.Option(names = "--networkChangeEventsFile", description = "Path to events file", defaultValue = "")
-	private static String networkChangeEvents;
+	@CommandLine.Option(names = "--networkCRS", description = "CRS of the input network (e.g.\"EPSG:31468\")")
+	private static String networkCRS;
 
 	public static void main(String[] args) {
-		//run(args, false);
 		System.exit(new CommandLine(new RunFreightExample()).execute(args));
 	}
 
-	//public static void run( String[] args, boolean runWithOTFVis ) throws ExecutionException, InterruptedException{
 	public Integer call() throws ExecutionException, InterruptedException {
 
 		// ### config stuff: ###
@@ -110,8 +105,7 @@ public class RunFreightExample implements MATSimAppCommand {
 
 	private static Config prepareConfig() {
 
-		//KMT: Schau mal bitte in Via nach, wie das aussieht. Meines Wissens nach hat Berlin eigentlich EPSG:31468 als CRS
-		String crs = "EPSG:25832";
+		String crs = networkCRS;
 
         Config config = ConfigUtils.createConfig();
 		config.controller().setOverwriteFileSetting(OutputDirectoryHierarchy.OverwriteFileSetting.deleteDirectoryIfExists);
@@ -122,14 +116,6 @@ public class RunFreightExample implements MATSimAppCommand {
 
 		config.network().setInputFile(networkFile);
 		config.network().setInputCRS(crs);
-
-		//KMT: Nutzt du überhaupt networkChangeEvents? Wenn nein, dann raus damit :)
-		String networkChangeEventsFileLocation = networkChangeEvents;
-		if (!Objects.equals(networkChangeEventsFileLocation, "")){
-			log.info("Setting networkChangeEventsInput file: {}", networkChangeEventsFileLocation);
-			config.network().setTimeVariantNetwork(true);
-			config.network().setChangeEventsInputFile(networkChangeEventsFileLocation);
-		}
 
 		config.plans().setInputCRS(crs);
 		config.plans().setActivityDurationInterpretation(PlansConfigGroup.ActivityDurationInterpretation.tryEndTimeThenDuration );
