@@ -18,17 +18,10 @@
 
 package org.matsim.codeexamples.extensions.freight;
 
-import com.graphhopper.jsprit.analysis.toolbox.StopWatch;
-import com.graphhopper.jsprit.core.algorithm.VehicleRoutingAlgorithm;
-import com.graphhopper.jsprit.core.algorithm.listener.VehicleRoutingAlgorithmListeners;
 import org.matsim.application.MATSimAppCommand;
 import org.matsim.freight.carriers.controler.CarrierScoringFunctionFactory;
-import com.graphhopper.jsprit.core.problem.VehicleRoutingProblem;
-import com.graphhopper.jsprit.core.problem.solution.VehicleRoutingProblemSolution;
-import com.graphhopper.jsprit.core.util.Solutions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.matsim.api.core.v01.Id;
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.population.Activity;
 import org.matsim.api.core.v01.population.Leg;
@@ -41,19 +34,12 @@ import org.matsim.core.controler.Controler;
 import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.core.controler.OutputDirectoryHierarchy;
 import org.matsim.core.config.groups.PlansConfigGroup;
-import org.matsim.freight.carriers.jsprit.MatsimJspritFactory;
-import org.matsim.freight.carriers.jsprit.NetworkBasedTransportCosts;
-import org.matsim.freight.carriers.jsprit.NetworkRouter;
 import org.matsim.core.scoring.ScoringFunction;
 import org.matsim.core.config.groups.VspExperimentalConfigGroup;
 import picocli.CommandLine;
 
-import javax.management.InvalidAttributeValueException;
-import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ForkJoinPool;
-import java.util.stream.Collectors;
 
 
 /**
@@ -177,7 +163,7 @@ public class RunFreightExample implements MATSimAppCommand {
 		controller.addOverridingModule(new AbstractModule() {
 			@Override
 			public void install() {
-				bind(CarrierScoringFunctionFactory.class).toInstance(new CarrierScoringFunctionFactory_KeepScore());
+				bind(CarrierScoringFunctionFactory.class).toInstance(new CarrierScoringFunctionFactory_KeepJspritScore());
 			}
 		});
 
@@ -186,7 +172,7 @@ public class RunFreightExample implements MATSimAppCommand {
 
 
 
-	private static class CarrierScoringFunctionFactory_KeepScore implements CarrierScoringFunctionFactory {
+	private static class CarrierScoringFunctionFactory_KeepJspritScore implements CarrierScoringFunctionFactory {
 		@Override public ScoringFunction createScoringFunction(Carrier carrier ){
 			return new ScoringFunction(){
 				@Override public void handleActivity( Activity activity ){
