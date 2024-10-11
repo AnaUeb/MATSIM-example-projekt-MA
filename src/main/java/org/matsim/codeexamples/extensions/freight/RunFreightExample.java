@@ -71,7 +71,7 @@ public class RunFreightExample implements MATSimAppCommand {
 	@CommandLine.Option(names = "--networkChangeEventsFile", description = "Path to events file", defaultValue = "")
 	private static String networkChangeEvents;
 
-	public static void main(String[] args) throws ExecutionException, InterruptedException{
+	public static void main(String[] args) {
 		//run(args, false);
 		System.exit(new CommandLine(new RunFreightExample()).execute(args));
 	}
@@ -110,7 +110,7 @@ public class RunFreightExample implements MATSimAppCommand {
 
 	private static Config prepareConfig() {
 
-		//KMT: Schau mal bitte in Via nach, wie das aussieht. Meines Wissens nach hat Berlin eingentlich EPSG:31468 als CRS
+		//KMT: Schau mal bitte in Via nach, wie das aussieht. Meines Wissens nach hat Berlin eigentlich EPSG:31468 als CRS
 		String crs = "EPSG:25832";
 
         Config config = ConfigUtils.createConfig();
@@ -126,7 +126,7 @@ public class RunFreightExample implements MATSimAppCommand {
 		//KMT: Nutzt du überhaupt networkChangeEvents? Wenn nein, dann raus damit :)
 		String networkChangeEventsFileLocation = networkChangeEvents;
 		if (!Objects.equals(networkChangeEventsFileLocation, "")){
-			log.info("Setting networkChangeEventsInput file: " + networkChangeEventsFileLocation);
+			log.info("Setting networkChangeEventsInput file: {}", networkChangeEventsFileLocation);
 			config.network().setTimeVariantNetwork(true);
 			config.network().setChangeEventsInputFile(networkChangeEventsFileLocation);
 		}
@@ -177,8 +177,6 @@ public class RunFreightExample implements MATSimAppCommand {
 				}
 				@Override public double getScore(){
 					return CarriersUtils.getJspritScore(carrier.getSelectedPlan()); //2nd Quickfix: Keep the current score -> which ist normally the score from jsprit. -> Better safe JspritScore as own value.
-//					return Double.MIN_VALUE; // 1st Quickfix, to have a "double" value for xsd (instead of neg.-Infinity).
-//					return Double.NEGATIVE_INFINITY; // Default from KN -> causes errors with reading in carrierFile because Java writes "Infinity", while XSD needs "INF"
 				}
 
 				@Override
