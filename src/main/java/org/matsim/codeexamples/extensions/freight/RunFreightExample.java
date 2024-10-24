@@ -19,6 +19,7 @@
 package org.matsim.codeexamples.extensions.freight;
 
 import org.matsim.application.MATSimAppCommand;
+import org.matsim.freight.carriers.analysis.RunFreightAnalysisEventBased;
 import org.matsim.freight.carriers.controler.CarrierScoringFunctionFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -38,6 +39,7 @@ import org.matsim.core.scoring.ScoringFunction;
 import org.matsim.core.config.groups.VspExperimentalConfigGroup;
 import picocli.CommandLine;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 
@@ -100,6 +102,24 @@ public class RunFreightExample implements MATSimAppCommand {
 		controler.run();
 
 		log.info(" Done.");
+
+		//start analysis
+		log.info("Start of analysis...");
+		log.info(config.controller().getOutputDirectory().toString());
+		log.info(config.controller().getOutputDirectory().toString()+"./analysis");
+		var analysis = new RunFreightAnalysisEventBased(
+				config.controller().getOutputDirectory().toString(),
+				config.controller().getOutputDirectory().toString()+"./analysis", "EPSG:25832");
+		try {
+			analysis.runAnalysis();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+
+
+
 		return 0;
 		}
 
