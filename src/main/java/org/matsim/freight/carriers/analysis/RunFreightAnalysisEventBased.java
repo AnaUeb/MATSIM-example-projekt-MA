@@ -103,6 +103,7 @@ public class RunFreightAnalysisEventBased {
 		//Log analysis
 		//added bei AUE
 		//ToDo: add log analysis for jsprit
+		String jSpritLog = SIM_OUTPUT_PATH+"current_log_snapshot.log";
 		LogFileAnalysis logFileAnalysis = new LogFileAnalysis(log,SIM_OUTPUT_PATH,analysisOutputDirectory);
 		logFileAnalysis.runLogFileAnalysis();
 

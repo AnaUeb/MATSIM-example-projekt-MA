@@ -40,7 +40,6 @@ import org.matsim.core.config.groups.VspExperimentalConfigGroup;
 import picocli.CommandLine;
 
 import java.io.IOException;
-import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 
@@ -93,6 +92,7 @@ public class RunFreightExample implements MATSimAppCommand {
 		// Solving the VRP (generate carrier's tour plans)
 		CarriersUtils.runJsprit(scenario);
 
+
 		//prepare controller
 		Controler controler = prepareControler( scenario ) ;
 
@@ -105,11 +105,9 @@ public class RunFreightExample implements MATSimAppCommand {
 
 		//start analysis
 		log.info("Start of analysis...");
-		log.info(config.controller().getOutputDirectory().toString());
-		log.info(config.controller().getOutputDirectory().toString()+"./analysis");
 		var analysis = new RunFreightAnalysisEventBased(
-				config.controller().getOutputDirectory().toString(),
-				config.controller().getOutputDirectory().toString()+"./analysis", "EPSG:25832");
+				config.controller().getOutputDirectory().toString()+"/",
+				config.controller().getOutputDirectory().toString()+"/analysis", "EPSG:25832");
 		try {
 			analysis.runAnalysis();
 		} catch (IOException e) {
@@ -193,6 +191,7 @@ public class RunFreightExample implements MATSimAppCommand {
 			};
 		}
 	}
+
 
 
 }

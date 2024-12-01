@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<carriers xmlns="http://www.matsim.org/files/dtd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.matsim.org/files/dtd http://www.matsim.org/files/dtd/carriersDefinitions_v2.1.xsd">
+	<carrier id="dhl_Koepenick">
+		<attributes>
+			<attribute name="jspritIterations" class="java.lang.Integer">2</attribute>
+		</attributes>
+		<capabilities fleetSize="INFINITE">
+			<vehicles>
+				<vehicle id="dhl_vehicle_dhl_Koepenick_141317924_start28800_1" depotLinkId="141317924" typeId="dhl_vehicle" earliestStart="08:00:00" latestEnd="16:00:00"/>
+			</vehicles>
+		</capabilities>
+		<shipments>
+			<shipment id="Shipment_141317924_182603253#6" from="141317924" to="182603253#6" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-136814133" from="141317924" to="-136814133" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4594026#0" from="141317924" to="-4594026#0" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_4556843#3" from="141317924" to="4556843#3" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-1110381402" from="141317924" to="-1110381402" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-76402289" from="141317924" to="-76402289" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4543407" from="141317924" to="-4543407" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4720638" from="141317924" to="-4720638" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4571956#2" from="141317924" to="-4571956#2" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-689406334#2" from="141317924" to="-689406334#2" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4490370#1" from="141317924" to="-4490370#1" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-50481674#3" from="141317924" to="-50481674#3" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-33465131" from="141317924" to="-33465131" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4490370#0" from="141317924" to="-4490370#0" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-1110378248" from="141317924" to="-1110378248" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-50481674#0" from="141317924" to="-50481674#0" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4490370#1_1" from="141317924" to="-4490370#1" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_24654539#2" from="141317924" to="24654539#2" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-905831845#0" from="141317924" to="-905831845#0" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4490369#2" from="141317924" to="-4490369#2" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-152832868" from="141317924" to="-152832868" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-152832868_1" from="141317924" to="-152832868" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4594026#0_1" from="141317924" to="-4594026#0" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4490367" from="141317924" to="-4490367" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4517116" from="141317924" to="-4517116" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4556844" from="141317924" to="-4556844" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_1101180376#0" from="141317924" to="1101180376#0" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4490368#1" from="141317924" to="-4490368#1" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_42265639#0" from="141317924" to="42265639#0" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-1110378235" from="141317924" to="-1110378235" size="0" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-437360302" from="141317924" to="-437360302" size="0" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-217992274" from="141317924" to="-217992274" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4490368#1_1" from="141317924" to="-4490368#1" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-1101010196#0" from="141317924" to="-1101010196#0" size="0" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4410584#0" from="141317924" to="-4410584#0" size="0" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4586185" from="141317924" to="-4586185" size="0" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-1101009908" from="141317924" to="-1101009908" size="0" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-909291873#1" from="141317924" to="-909291873#1" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-1101009909" from="141317924" to="-1101009909" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4586185_1" from="141317924" to="-4586185" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-1101010198" from="141317924" to="-1101010198" size="0" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4586185_2" from="141317924" to="-4586185" size="0" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-152832873" from="141317924" to="-152832873" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_24677765#0" from="141317924" to="24677765#0" size="0" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4490369#2_1" from="141317924" to="-4490369#2" size="0" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4543407_1" from="141317924" to="-4543407" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="Shipment_141317924_-4540284#1" from="141317924" to="-4540284#1" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+<shipment id="Shipment_141317924_-4594026#0_2" from="141317924" to="-4594026#0" size="0" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+		</shipments>
+	</carrier>
+	<carrier id="dhl">
+		<attributes>
+			<attribute name="jspritIterations" class="java.lang.Integer">2</attribute>
+		</attributes>
+		<capabilities fleetSize="INFINITE">
+			<vehicles>
+				<vehicle id="dhl_vehicle__1" depotLinkId="141317924" typeId="dhl_vehicle" earliestStart="08:00:00" latestEnd="16:00:00"/>
+			</vehicles>
+		</capabilities>
+		<shipments>
+			<shipment id="ship141317924_182603253#6" from="141317924" to="182603253#6" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="ship141317924_-136814133" from="141317924" to="-136814133" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="ship141317924_-4594026#0" from="141317924" to="-4594026#0" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="ship141317924_4556843#3" from="141317924" to="4556843#3" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="ship141317924_-1110381402" from="141317924" to="-1110381402" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="ship141317924_-76402289" from="141317924" to="-76402289" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="ship141317924_-4543407" from="141317924" to="-4543407" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="ship141317924_-4720638" from="141317924" to="-4720638" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="ship141317924_-4571956#2" from="141317924" to="-4571956#2" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="ship141317924_-689406334#2" from="141317924" to="-689406334#2" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="ship141317924_-4490370#1" from="141317924" to="-4490370#1" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="ship141317924_-50481674#3" from="141317924" to="-50481674#3" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="ship141317924_-33465131" from="141317924" to="-33465131" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			<shipment id="ship141317924_-4490370#0" from="141317924" to="-4490370#0" size="1" startPickup="07:46:40" endPickup="16:00:00" startDelivery="08:00:00" endDelivery="16:00:00" pickupServiceTime="00:00:00" deliveryServiceTime="00:03:00"/>
+			</shipments>
+	</carrier>
+</carriers>

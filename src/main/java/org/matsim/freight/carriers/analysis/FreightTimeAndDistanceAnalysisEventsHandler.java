@@ -329,11 +329,18 @@ public class FreightTimeAndDistanceAnalysisEventsHandler implements BasicEventHa
 
 		for (Id<Vehicle> vehicleId : vehicleId2TourLength.keySet()) {
 			Id<Carrier> carrier = vehicleId2CarrierId.get(vehicleId);
+			carrierId2SumOfTourDuration.merge(carrier,vehicleId2TourLength.get(vehicleId),Double::sum); // per carrierID
+		}
+
+		for (Id<Vehicle> vehicleId : vehicleId2TourLength.keySet()) {
+			Id<Carrier> carrier = vehicleId2CarrierId.get(vehicleId);
 			carrierId2Mileage.merge(carrier,vehicleId2TourLength.get(vehicleId),Double::sum); // per carrierID
 		}
 
 
 		for (Carrier carrier : sortedCarrierMap.values()) {
+			log.info(carrierId2SumOfTourDuration.get(carrier.getId()));
+
 			final Double sumOfTourDurationInSeconds = carrierId2SumOfTourDuration.getOrDefault(carrier.getId(), 0.);
 			final Double sumOfDistanceInMeters = carrierId2Mileage.getOrDefault(carrier.getId(), 0.);
 			final Double sumOfTravelTimeInSeconds = carrierId2TravelTime.getOrDefault(carrier.getId(), 0.);
@@ -371,6 +378,7 @@ public class FreightTimeAndDistanceAnalysisEventsHandler implements BasicEventHa
 		double durationInH = 0;
 		double distanceInKm = 0;
 		double travelInH = 0;
+		double units = 0;
 
 		//total distance and duration
 		for (Id<Vehicle> vehicleId : vehicleId2VehicleType.keySet()) {
